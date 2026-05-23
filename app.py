@@ -1,33 +1,69 @@
 from flask import Flask, render_template, request
+import sqlite3
 
 app = Flask(__name__)
 
+# CREAR BASE DE DATOS
+def init_db():
+    conn = sqlite3.connect("usuarios.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS usuarios (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        usuario TEXT,
+        password TEXT
+    )
+    """)
+
+    conn.commit()
+    conn.close()
+
+init_db()
+
+# LOGIN
 @app.route("/")
 def login():
     return render_template("login.html")
 
+# REGISTRAR
 @app.route("/registrar", methods=["POST"])
 def registrar():
 
-    usuario = request.form["usuario"]
-    password = request.form["password"]
+    usuario = request.form.get("usuario")
+    password = request.form.get("password")
 
-    with open("usuarios.txt", "a", encoding="utf-8") as f:
-        f.write(f"Usuario: {usuario} | Password: {password}\n")
+    conn = sqlite3.connect("usuarios.db")
+    cursor = conn.cursor()
 
-    return f"Usuario {usuario} registrado correctamente"
+    cursor.execute(
+        "INSERT INTO usuarios (usuario, password) VALUES (?, ?)",
+        (usuario, password)
+    )
 
+    conn.commit()
+    conn.close()
+
+    return f"Registrado: {usuario}"
+
+# ADMIN
 @app.route("/admin")
 def admin():
 
-    try:
-        with open("usuarios.txt", "r", encoding="utf-8") as f:
-            datos = f.readlines()
+    conn = sqlite3.connect("usuarios.db")
+    cursor = conn.cursor()
 
-        return "<br>".join(datos)
+    cursor.execute("SELECT usuario, password FROM usuarios")
+    datos = cursor.fetchall()
 
-    except:
-        return "No hay registros todavía"
+    conn.close()
+
+    resultado = ""
+
+    for usuario, password in datos:
+        resultado += f"Usuario: {usuario} | Password: {password}<br>"
+
+    return resultado if resultado else "No hay registros todavía"
 
 if __name__ == "__main__":
     app.run(debug=True)
