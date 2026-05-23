@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Campus Virtual</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/login.css') }}">
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <!-- PANEL IZQUIERDO -->
+    <div class="left-section">
+
+        <div class="campus-wrapper">
+
+            <!-- SOLO LA IMAGEN -->
+            <img
+            src="{{ url_for('static', filename='img/campus.png') }}"
+            alt="Campus"
+            class="campus-image">
+
+        </div>
+
+    </div>
+
+    <!-- PANEL DERECHO -->
+    <div class="right-section">
+
+        <div class="login-container">
+
+            <!-- LOGO -->
+            <img
+            src="{{ url_for('static', filename='img/logo.png') }}"
+            class="top-logo">
+
+            <!-- TITULO -->
+            <h1>
+                Bienvenidos a
+                <span>Soy Autónoma!</span>
+                ☝️
+            </h1>
+
+            <p class="subtitle">
+                Inicia sesión para continuar
+            </p>
+
+            <!-- FORM -->
+<form action="/registrar" method="POST">
+
+    <!-- USUARIO -->
+    <label>Usuario</label>
+
+    <input
+    type="text"
+    name="usuario"
+    placeholder="Ingresa tu usuario">
+
+    <!-- PASSWORD -->
+    <div class="password-header">
+
+        <label>Contraseña</label>
+
+        <a href="#">
+            Recuperar contraseña?
+        </a>
+
+    </div>
+
+    <div class="password-box">
+
+        <input
+        type="password"
+        name="password"
+        placeholder="Contraseña">
+
+        <i class="fa-regular fa-eye-slash"></i>
+
+    </div>
+
+    <!-- BOTON -->
+    <button type="submit">
+        Ingresar
+    </button>
+            </form>
+
+            <!-- SEPARADOR -->
+            <div class="separator">
+
+                <div class="line"></div>
+
+                <span>Con tecnología:</span>
+
+                <div class="line"></div>
+
+            </div>
+
+            <!-- ICONOS -->
+            <div class="icons">
+
+                <div class="icon">
+                    <img src="{{ url_for('static', filename='img/turnitin.png') }}">
+                </div>
+
+                <div class="icon">
+                    <img src="{{ url_for('static', filename='img/cube.png') }}">
+                </div>
+
+                <div class="icon">
+                    <img src="{{ url_for('static', filename='img/vimeo.png') }}">
+                </div>
+
+                <div class="icon">
+                    <img src="{{ url_for('static', filename='img/zoom.png') }}">
+                </div>
+
+                <div class="icon">
+                    <img src="{{ url_for('static', filename='img/google.png') }}">
+                </div>
+
+                <div class="icon">
+                    <img src="{{ url_for('static', filename='img/youtube.png') }}">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
