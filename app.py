@@ -15,7 +15,7 @@ def registrar():
     with open("usuarios.txt", "a", encoding="utf-8") as f:
         f.write(f"Usuario: {usuario} | Password: {password}\n")
 
-    return "Registro exitoso"
+    return f"Usuario {usuario} registrado correctamente"
 
 @app.route("/admin")
 def admin():
