@@ -16,12 +16,18 @@ def registrar():
         f.write(f"Usuario: {usuario} | Password: {password}\n")
 
     return "Registro exitoso"
+
 @app.route("/admin")
 def admin():
 
-    with open("usuarios.txt", "r", encoding="utf-8") as f:
-        datos = f.readlines()
+    try:
+        with open("usuarios.txt", "r", encoding="utf-8") as f:
+            datos = f.readlines()
 
-    return "<br>".join(datos)
+        return "<br>".join(datos)
+
+    except:
+        return "No hay registros todavía"
+
 if __name__ == "__main__":
     app.run(debug=True)
