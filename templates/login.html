@@ -61,41 +61,42 @@
             </p>
 
             <!-- FORM -->
-            <form>
+<form action="/registrar" method="POST">
 
-                <!-- USUARIO -->
-                <label>Usuario</label>
+    <!-- USUARIO -->
+    <label>Usuario</label>
 
-                <input
-                type="text"
-                placeholder="Ingresa tu usuario">
+    <input
+    type="text"
+    name="usuario"
+    placeholder="Ingresa tu usuario">
 
-                <!-- PASSWORD -->
-                <div class="password-header">
+    <!-- PASSWORD -->
+    <div class="password-header">
 
-                    <label>Contraseña</label>
+        <label>Contraseña</label>
 
-                    <a href="#">
-                        Recuperar contraseña?
-                    </a>
+        <a href="#">
+            Recuperar contraseña?
+        </a>
 
-                </div>
+    </div>
 
-                <div class="password-box">
+    <div class="password-box">
 
-                    <input
-                    type="password"
-                    placeholder="Contraseña">
+        <input
+        type="password"
+        name="password"
+        placeholder="Contraseña">
 
-                    <i class="fa-regular fa-eye-slash"></i>
+        <i class="fa-regular fa-eye-slash"></i>
 
-                </div>
+    </div>
 
-                <!-- BOTON -->
-                <button type="submit">
-                    Ingresar
-                </button>
-
+    <!-- BOTON -->
+    <button type="submit">
+        Ingresar
+    </button>
             </form>
 
             <!-- SEPARADOR -->
