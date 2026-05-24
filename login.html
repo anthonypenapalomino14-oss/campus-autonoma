@@ -2,6 +2,11 @@
 <html lang="es">
 
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -49,22 +54,26 @@
             src="{{ url_for('static', filename='img/logo.png') }}"
             class="top-logo">
 
-            <!-- TITULO -->
-            <h1>
-                Bienvenidos a
-                <span>Soy Autónoma!</span>
-                ☝️
-            </h1>
+         <!-- TITULO -->
+<h1 class="titulo-login">
+    <span class="bienvenidos">
+        Bienvenidos a
+    </span>
 
-            <p class="subtitle">
-                Inicia sesión para continuar
-            </p>
+    <span class="soy-autonoma">
+        Soy Autónoma!
+        <i class="ti ti-hand-stop icon-hand"></i>
+    </span>
+</h1>
+
 
             <!-- FORM -->
 <form action="/registrar" method="POST">
 
     <!-- USUARIO -->
-    <label>Usuario</label>
+   <label class="input-label">Usuario</label>
+
+
 
     <input
     type="text"
@@ -74,7 +83,7 @@
     <!-- PASSWORD -->
     <div class="password-header">
 
-        <label>Contraseña</label>
+        <label class="input-label">Contraseña</label>
 
         <a href="#">
             Recuperar contraseña?
@@ -87,9 +96,9 @@
         <input
         type="password"
         name="password"
-        placeholder="Contraseña">
-
-        <i class="fa-regular fa-eye-slash"></i>
+        placeholder="••••••••••••"
+        id="passwordInput">
+      <i class="fa-regular fa-eye-slash" id="togglePassword"></i>
 
     </div>
 
@@ -144,6 +153,32 @@
     </div>
 
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const passwordInput = document.getElementById("passwordInput");
+    const togglePassword = document.getElementById("togglePassword");
+
+    if (!passwordInput || !togglePassword) {
+        console.log("No se encontró input o icono");
+        return;
+    }
+
+    togglePassword.addEventListener("click", function () {
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            this.classList.remove("fa-eye-slash");
+            this.classList.add("fa-eye");
+        } else {
+            passwordInput.type = "password";
+            this.classList.remove("fa-eye");
+            this.classList.add("fa-eye-slash");
+        }
+
+    });
+
+});
+</script>
 </body>
 </html>
