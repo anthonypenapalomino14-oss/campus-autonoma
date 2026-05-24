@@ -44,7 +44,10 @@ def registrar():
     conn.commit()
     conn.close()
 
-    return f"Registrado: {usuario}"
+    return render_template(
+    "login.html",
+    error="Usuario y/o password incorrecto."
+)
 
 # ADMIN
 @app.route("/admin")
