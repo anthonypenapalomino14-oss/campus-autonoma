@@ -303,3 +303,11 @@ button{
     width:20px;
     height:20px;
 }
+.error-container{
+    height:20px;
+}
+
+.error-message{
+    color:red;
+    font-size:14px;
+}
