@@ -193,4 +193,45 @@ body {
   .signature {
     font-size: 1.3rem;
   }
+    /* Cuadro deslizable para la carta */
+#dedication-text {
+    width: min(90vw, 650px);
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 20px 25px;
+    box-sizing: border-box;
+
+    line-height: 1.7;
+    text-align: center;
+
+    margin: 0 auto;
+
+    scrollbar-width: thin;
+
+    scroll-behavior: smooth;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Barra de desplazamiento */
+#dedication-text::-webkit-scrollbar {
+    width: 7px;
+}
+
+#dedication-text::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+}
+
+#dedication-text::-webkit-scrollbar-thumb {
+    background: rgba(120, 120, 120, 0.5);
+    border-radius: 10px;
+}
+
+#dedication-text::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 120, 120, 0.75);
+}
 }
