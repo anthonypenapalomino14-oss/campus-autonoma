@@ -305,4 +305,39 @@ body {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
+    #close-surprise {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 201;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.95);
+  color: #e60026;
+
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+#close-surprise.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#close-surprise:hover {
+  transform: scale(1.1);
+}
 }
