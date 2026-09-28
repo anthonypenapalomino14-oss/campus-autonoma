@@ -35,15 +35,50 @@ body {
   top: 7vw;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 92vw;
+
+  width: 88vw;
+  max-width: 88vw;
+  max-height: 260px;
+
   font-size: 1.05rem;
+  line-height: 1.65;
+
   text-align: center;
   color: #000000;
   font-family: 'Courier New', Courier, monospace;
+
   white-space: pre-line;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 18px 20px;
+  box-sizing: border-box;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
   z-index: 3;
   opacity: 0;
-  pointer-events: none;
+  pointer-events: auto;
+
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+/* Barra de desplazamiento de la carta */
+.dedication-text::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dedication-text::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+}
+
+.dedication-text::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.5);
+  border-radius: 10px;
 }
 
 .signature {
