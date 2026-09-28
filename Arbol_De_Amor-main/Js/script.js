@@ -66,29 +66,43 @@ function getURLParam(name) {
   const url = new URL(window.location.href);
   return url.searchParams.get(name);
 }
+// Efecto máquina de escribir para el texto de dedicatoria
+function getURLParam(name) {
+  const url = new URL(window.location.href);
+  return url.searchParams.get(name);
+}
 
-function showDedicationText() { //seguidores
+function showDedicationText() {
   let text = getURLParam('text');
+
   if (!text) {
-    text = `Para el amor de mi vida:\n\nDesde el primer momento supe que eras tú. Tu sonrisa, tu voz, tu forma de ser… todo en ti me hace sentir en casa.\n\nGracias por acompañarme en cada paso, por entenderme incluso en silencio, y por llenar mis días de amor.\n\nTe amo más de lo que las palabras pueden expresar.`;  } else {
+    text = `Alesia, quiero que sepas que te amo con todo mi ser y que aunque ahora mismo estemos pasando por una situación que quizá nos esté haciendo sentir cosas difíciles, eso no cambia todo lo que siento por ti ni todo lo que quiero construir a tu lado, sé que he cometido errores y quiero pedirte perdón especialmente por aquellas veces en las que he bromeado con cosas que no debía, quizá para mí pudieron parecer simples bromas en algún momento, pero entiendo que hay cosas con las que no se juega cuando se trata de los sentimientos de la persona que amas, y jamás quisiera que una palabra mía, una broma o una actitud te haga pensar que no te tomo en serio o que no sé lo que quiero contigo, porque sí lo sé, te quiero a ti, quiero seguir compartiendo mi vida contigo, quiero que podamos superar cada situación que se nos presente y aprender de todo lo que nos ha pasado, quiero que cuando miremos atrás podamos decir que incluso en los momentos difíciles elegimos hablar, entendernos, perdonarnos y seguir intentando, porque para mí lo nuestro vale muchísimo, no quiero que dudes de lo que siento ni de las intenciones que tengo contigo, porque cuando pienso en mi futuro también apareces tú, pienso en nosotros creciendo juntos, cumpliendo nuestros sueños, teniendo nuestro hogar, casándonos algún día, formando una familia, teniendo nuestros hijos y poder mirar atrás sabiendo que todo lo que vivimos nos ayudó a llegar hasta ahí, quiero conocer cada versión de ti, estar en tus días buenos y también acompañarte cuando las cosas no estén bien, quiero celebrar tus logros, apoyarte cuando tengas miedo, escucharte cuando necesites hablar y aprender a quererte cada día de una manera más bonita y más madura, sé que el amor no significa que nunca vamos a equivocarnos ni que todo siempre será perfecto, sé que vamos a tener diferencias, momentos difíciles y cosas que tendremos que aprender a solucionar, pero también sé que las cosas pueden mejorar cuando los dos ponemos de nuestra parte y cuando existe amor de verdad, por eso hoy no quiero que te quedes solamente con mis errores ni con las cosas que hice mal, quiero que también recuerdes todo lo que siento por ti y todo lo que sueño para nosotros, perdóname por las veces en las que no pensé antes de hablar o actuar, perdóname si alguna vez hice que sintieras que no eras suficiente o que no eras importante para mí, porque eres alguien que ocupa un lugar enorme en mi corazón y jamás quisiera perder de vista lo especial que eres para mí, quiero seguir construyendo contigo, quiero que podamos sanar lo que nos haya dolido, mejorar lo que tengamos que mejorar y demostrar con hechos todo aquello que a veces las palabras no pueden explicar, no quiero prometerte una vida perfecta porque sé que eso no existe, pero sí quiero prometerte que mientras sigamos caminando juntos voy a querer aprender, crecer y ser mejor para mí y también para nosotros, quiero que algún día podamos recordar este momento y decir que lo superamos juntos, que no dejamos que una situación difícil acabara con todo lo bonito que todavía podemos vivir, porque yo todavía tengo muchísimos sueños contigo, muchísimas cosas que quiero conocer a tu lado y muchísimos momentos que quiero guardar para siempre, Alesia, te amo muchísimo y quiero que nunca una broma, un error o un momento complicado te haga olvidar eso, quiero que tengas claro que lo que deseo contigo es real, quiero amarte, cuidarte, respetarte, crecer contigo, casarme contigo, formar nuestra familia y ser felices juntos, y aunque ahora quizá no tengamos todas las respuestas, quiero que podamos encontrarlas poco a poco, juntos, porque mi corazón sigue teniendo un lugar para ti y mis deseos para el futuro siguen teniendo tu nombre en ellos`;
+  } else {
     text = decodeURIComponent(text).replace(/\\n/g, '\n');
   }
+
   const container = document.getElementById('dedication-text');
+
   container.classList.add('typing');
+
   let i = 0;
+
   function type() {
     if (i <= text.length) {
       container.textContent = text.slice(0, i);
       i++;
-      setTimeout(type, text[i - 2] === '\n' ? 350 : 45);
+
+      setTimeout(
+        type,
+        text[i - 2] === '\n' ? 350 : 45
+      );
     } else {
-      // Al terminar el typing, mostrar la firma animada
       setTimeout(showSignature, 600);
     }
   }
+
   type();
 }
-
 // Firma manuscrita animada
 function showSignature() {
   // Cambia para buscar la firma dentro del contenedor de dedicatoria
