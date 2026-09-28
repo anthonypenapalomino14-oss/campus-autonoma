@@ -257,4 +257,3 @@ window.addEventListener('DOMContentLoaded', () => {
   createSurpriseButton();
 });
 
-});
