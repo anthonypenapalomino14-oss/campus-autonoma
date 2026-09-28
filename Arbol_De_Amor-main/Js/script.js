@@ -218,82 +218,44 @@ function showCountdown() {
   update();
   setInterval(update, 1000);
 }
-
-// --- Música de fondo ---
-function playBackgroundMusic() {
-  const audio = document.getElementById('bg-music');
-  if (!audio) return;
-
-  // --- Opción archivo local por parámetro 'musica' ---
-  let musicaParam = getURLParam('musica');
-  if (musicaParam) {
-    // Decodifica y previene rutas maliciosas
-    musicaParam = decodeURIComponent(musicaParam).replace(/[^\w\d .\-]/g, '');
-    audio.src = 'Music/' + musicaParam;
-  }
-
-  // --- Opción YouTube (solo mensaje de ayuda) ---
-  let youtubeParam = getURLParam('youtube');
-  if (youtubeParam) {
-    // Muestra mensaje de ayuda para descargar el audio
-    let helpMsg = document.getElementById('yt-help-msg');
-    if (!helpMsg) {
-      helpMsg = document.createElement('div');
-      helpMsg.id = 'yt-help-msg';
-      helpMsg.style.position = 'fixed';
-      helpMsg.style.right = '18px';
-      helpMsg.style.bottom = '180px';
-      helpMsg.style.background = 'rgba(255,255,255,0.95)';
-      helpMsg.style.color = '#e60026';
-      helpMsg.style.padding = '10px 16px';
-      helpMsg.style.borderRadius = '12px';
-      helpMsg.style.boxShadow = '0 2px 8px #e6002633';
-      helpMsg.style.fontSize = '1.05em';
-      helpMsg.style.zIndex = 100;
-      helpMsg.innerHTML = 'Para usar música de YouTube, descarga el audio (por ejemplo, usando y2mate, 4K Video Downloader, etc.), colócalo en la carpeta <b>Music</b> y usa la URL así:<br><br><code>?musica=nombre.mp3</code>';
-      document.body.appendChild(helpMsg);
-      setTimeout(() => { if(helpMsg) helpMsg.remove(); }, 15000);
-    }
-  }
-
+// Botón sorpresa
+function createSurpriseButton() {
   let btn = document.getElementById('music-btn');
+
   if (!btn) {
     btn = document.createElement('button');
     btn.id = 'music-btn';
-    btn.textContent = '🔊 Música';
-    btn.style.position = 'fixed';
-    btn.style.bottom = '18px';
-    btn.style.right = '18px';
-    btn.style.zIndex = 99;
-    btn.style.background = 'rgba(255,255,255,0.85)';
-    btn.style.border = 'none';
-    btn.style.borderRadius = '24px';
-    btn.style.padding = '10px 18px';
-    btn.style.fontSize = '1.1em';
-    btn.style.cursor = 'pointer';
     document.body.appendChild(btn);
   }
-  audio.volume = 0.7;
-  audio.loop = true;
-  // Intentar reproducir inmediatamente
-  audio.play().then(() => {
-    btn.textContent = '🔊 Música';
-  }).catch(() => {
-    // Si falla el autoplay, esperar click en el botón
-    btn.textContent = '▶️ Música';
-  });
+
+  btn.textContent = 'PRESIONAME';
+
   btn.onclick = () => {
-    if (audio.paused) {
-      audio.play();
-      btn.textContent = '🔊 Música';
+    // Crear la imagen
+    let photo = document.getElementById('surprise-photo');
+
+    if (!photo) {
+      photo = document.createElement('img');
+      photo.id = 'surprise-photo';
+      photo.src = 'Music/foto.jpg';
+      photo.alt = 'Una sorpresa para ti';
+
+      document.body.appendChild(photo);
+
+      // Pequeña animación al aparecer
+      setTimeout(() => {
+        photo.classList.add('show');
+      }, 50);
     } else {
-      audio.pause();
-      btn.textContent = '🔈 Música';
+      // Si ya existe, mostrarla nuevamente
+      photo.classList.toggle('show');
     }
   };
 }
 
-// Intentar reproducir la música lo antes posible (al cargar la página)
+// Crear el botón cuando cargue la página
 window.addEventListener('DOMContentLoaded', () => {
-  playBackgroundMusic();
+  createSurpriseButton();
+});
+
 });
