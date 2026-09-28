@@ -142,4 +142,25 @@ body {
   width: 13px;
   height: 18px;
 }
+/* Botón sorpresa en celular */
+#music-btn {
+  bottom: 18px;
+  right: 50%;
+  transform: translateX(50%);
 
+  padding: 10px 20px;
+  font-size: 0.95rem;
+
+  white-space: nowrap;
+}
+
+#music-btn:hover {
+  transform: translateX(50%) scale(1.05);
+}
+
+#surprise-photo {
+  max-width: 88vw;
+  max-height: 75vh;
+
+  border-radius: 12px;
+}
