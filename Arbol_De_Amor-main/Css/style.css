@@ -234,4 +234,75 @@ body {
 #dedication-text::-webkit-scrollbar-thumb:hover {
     background: rgba(120, 120, 120, 0.75);
 }
+    /* ================================
+   BOTÓN SORPRESA
+   ================================ */
+
+#music-btn {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 99;
+
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 24px;
+
+  padding: 11px 20px;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  color: #e60026;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#music-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen sorpresa */
+#surprise-photo {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(0.7);
+
+  max-width: 85vw;
+  max-height: 80vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  z-index: 200;
+
+  opacity: 0;
+
+  border-radius: 15px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+
+  pointer-events: none;
+}
+
+#surprise-photo.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
 }
