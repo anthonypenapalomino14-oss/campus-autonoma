@@ -230,24 +230,36 @@ function createSurpriseButton() {
   btn.textContent = 'PRESIONAME';
 
   btn.onclick = () => {
-    // Crear la imagen
     let photo = document.getElementById('surprise-photo');
+    let closeBtn = document.getElementById('close-surprise');
 
     if (!photo) {
       photo = document.createElement('img');
       photo.id = 'surprise-photo';
       photo.src = 'Music/foto.jpg';
       photo.alt = 'Una sorpresa para ti';
-
       document.body.appendChild(photo);
 
-      // Pequeña animación al aparecer
+      // Botón X
+      closeBtn = document.createElement('button');
+      closeBtn.id = 'close-surprise';
+      closeBtn.textContent = '×';
+      closeBtn.setAttribute('aria-label', 'Cerrar imagen');
+      document.body.appendChild(closeBtn);
+
+      closeBtn.onclick = () => {
+        photo.classList.remove('show');
+        closeBtn.classList.remove('show');
+      };
+
       setTimeout(() => {
         photo.classList.add('show');
+        closeBtn.classList.add('show');
       }, 50);
+
     } else {
-      // Si ya existe, mostrarla nuevamente
-      photo.classList.toggle('show');
+      photo.classList.add('show');
+      closeBtn.classList.add('show');
     }
   };
 }
