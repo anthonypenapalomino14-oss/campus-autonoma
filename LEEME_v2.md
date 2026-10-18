@@ -2,7 +2,7 @@
 
 1. Respaldo: en phpMyAdmin exporta tu base `sistema_ventas`.
 2. Base de datos: pestaña SQL → pega `sql/migracion_v2.sql` → Continuar (una sola vez).
-3. Copia esta carpeta sobre `htdocs/sistema_ventas` (reemplaza los archivos).
+3. En Render, publica los archivos de esta aplicación en la raíz del sitio; consulta LEEME_DEPLOY_RENDER.txt.
 4. Entra con tus usuarios de siempre. Crea cuentas de Ventas/Soporte en **Equipo**.
 
 Perfiles: Administración (todo) · Ventas (caja, inventario y facturación de su tienda) ·

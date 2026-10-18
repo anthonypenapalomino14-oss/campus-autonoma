@@ -1,5 +1,5 @@
 
-<form action="/sistema_ventas/logout.php" method="POST"
+<form action="<?= BASE_URL ?>/logout.php" method="POST"
       style="margin-top:24px">
     <button type="submit"
             style="width:100%;padding:11px;border:1px solid #3a3a36;

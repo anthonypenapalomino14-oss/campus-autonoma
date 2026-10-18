@@ -1,6 +1,6 @@
 <?php
 // Sesión, roles y sede activa de Market Donna
-const BASE_URL = '/sistema_ventas';
+const BASE_URL = '';
 date_default_timezone_set('America/Lima');
 
 if (session_status() !== PHP_SESSION_ACTIVE) {

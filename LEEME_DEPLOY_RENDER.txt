@@ -1,0 +1,11 @@
+MARKET DONNA - NOTAS DE DESPLIEGUE
+
+1. Este paquete coloca los archivos de la aplicación directamente en la raíz de /var/www/html.
+2. BASE_URL está configurado como cadena vacía porque la aplicación se sirve desde la raíz del dominio.
+3. El Dockerfile instala pdo_mysql y mbstring, extensiones usadas por el proyecto.
+4. La conexión usa variables de entorno DB_HOST, DB_PORT, DB_NAME, DB_USER y DB_PASSWORD.
+5. En Render, define esas variables en Environment y vuelve a desplegar.
+6. Debe existir config/certificados/ca.pem (se conserva del proyecto original).
+7. No se incluyen los scripts públicos de diagnóstico/probar conexión.
+8. La contraseña que estaba escrita directamente en el archivo original debe rotarse en Aiven antes de desplegar.
+9. El SQL adjunto es un respaldo de estructura y datos de la base sistema_ventas. Importa el SQL en la base destino correcta (en la configuración original de conexión era defaultdb) solo si necesitas restaurar esos datos; no lo importes encima de una base con datos que debas conservar sin hacer respaldo primero.

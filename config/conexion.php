@@ -1,18 +1,28 @@
 <?php
-
-$host = 'mysql-2a123e6-anthonypenapalomino8-1777.f.aivencloud.com';
-$port = 15349;
-$dbname = 'defaultdb';
-$user = 'avnadmin';
-$password = 'AVNS_WxC6m0FthE1Gxbhil8w';
+// Configuración segura para Render + Aiven mediante variables de entorno.
+$host = getenv('DB_HOST') ?: '';
+$port = (int)(getenv('DB_PORT') ?: 3306);
+$dbname = getenv('DB_NAME') ?: 'defaultdb';
+$user = getenv('DB_USER') ?: '';
+$password = getenv('DB_PASSWORD') ?: '';
 
 $ca = __DIR__ . '/certificados/ca.pem';
-if (!file_exists($ca)) {
-    exit('No se encuentra el certificado: ' . $ca);
+
+if ($host === '' || $user === '' || $password === '') {
+    error_log('Faltan variables de entorno de la base de datos (DB_HOST, DB_USER o DB_PASSWORD).');
+    http_response_code(500);
+    exit('La conexión con la base de datos no está configurada. Revisa las variables de entorno en Render.');
 }
+
+if (!is_file($ca)) {
+    error_log('No se encontró el certificado CA de Aiven en config/certificados/ca.pem.');
+    http_response_code(500);
+    exit('Falta el certificado de seguridad de la base de datos.');
+}
+
 try {
     $conexion = new PDO(
-        "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4",
+        "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8mb4",
         $user,
         $password,
         [
@@ -25,6 +35,7 @@ try {
         ]
     );
 } catch (PDOException $e) {
-    error_log($e->getMessage());
-    exit('Error de conexión: ' . htmlspecialchars($e->getMessage()));
+    error_log('Error de conexión MySQL: ' . $e->getMessage());
+    http_response_code(500);
+    exit('No se pudo conectar con la base de datos. Revisa las variables de entorno y los registros de Render.');
 }

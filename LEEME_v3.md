@@ -2,7 +2,7 @@
 
 1. Respaldo de la base `sistema_ventas` (phpMyAdmin > Exportar).
 2. phpMyAdmin > SQL > pega `sql/migracion_v3.sql` > Continuar (una sola vez).
-3. Copia esta carpeta sobre `htdocs/sistema_ventas` (reemplaza archivos).
+3. En Render, publica los archivos de esta aplicación en la raíz del sitio; consulta LEEME_DEPLOY_RENDER.txt.
 4. Entra a **Productos**: al crear o editar cada producto ya puedes subir su foto
    (JPG, PNG o WebP, hasta 2 MB; se reduce sola). Las fotos quedan en `uploads/productos/`.
 

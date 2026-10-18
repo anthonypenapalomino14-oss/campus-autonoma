@@ -1,6 +1,6 @@
 <?php
 // Fotos de productos: subir, reducir, mostrar y borrar.
-const URL_IMG = '/sistema_ventas/uploads/productos/';
+const URL_IMG = '/uploads/productos/';
 const DIR_IMG = __DIR__ . '/../uploads/productos/';
 const MAX_IMG = 2 * 1024 * 1024;
 
